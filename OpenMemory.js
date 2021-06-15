@@ -5,7 +5,7 @@
  * legu: libshella-2.8.so
  * 360:libjiagu.so
  */
-Interceptor.attach(Module.findExportByName("libart.so", "_ZN3art7DexFile10OpenMemoryEPKhjRKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEjPNS_6MemMapEPKNS_10OatDexFileEPS9_"), {
+Interceptor.attach(Module.findExportByName("libart.so", "_ZN3art7DexFile10OpenCommonEPKhjRKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEjPKNS_10OatDexFileEbbPS9_PNS0_12VerifyResultE"), {
     onEnter: function (args) {
       
         //dex起始位置
@@ -19,7 +19,7 @@ Interceptor.attach(Module.findExportByName("libart.so", "_ZN3art7DexFile10OpenMe
 
         console.log("dex_size :" + dex_size)
         //dump dex 到/data/data/pkg/目录下
-        var file = new File("/data/data/xxx.xxx.xxx/" + dex_size + ".dex", "wb")
+        var file = new File("/data/data/com.yaya.zone/" + dex_size + ".dex", "wb")
         file.write(Memory.readByteArray(begin, dex_size))
         file.flush()
         file.close()
